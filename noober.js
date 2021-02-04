@@ -69,5 +69,216 @@ function renderRides(ridesArray) {
 
 window.addEventListener('DOMContentLoaded', function() {
   // YOUR CODE
+
+  let nooberPurpleButtonFormat = document.querySelector('#noober-purple-filter')
+  let nooberPoolButtonFormat = document.querySelector('#noober-pool-filter')
+  let nooberXButtonFormat = document.querySelector('#noober-x-filter')
+  let nooberXLButtonFormat = document.querySelector('#noober-xl-filter')
+  let allRidesButtonFormat = document.querySelector('#all-filter')
+
+  
+
+  let allRidesButton = document.querySelector('#all-filter')
+  allRidesButton.addEventListener('click', async function(event)
+  {
+    event.preventDefault()
+    let clearDiv = document.querySelector('.rides')
+    clearDiv.innerHTML = ''
+
+    
+    nooberPoolButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    nooberPurpleButtonFormat.classList.remove('bg-purple-500', 'text-white')
+    nooberXButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    nooberXLButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    allRidesButtonFormat.classList.remove('text-blue-500')
+
+    nooberPoolButtonFormat.classList.add('text-blue-500')
+    nooberPurpleButtonFormat.classList.add('text-purple-500')
+    nooberXButtonFormat.classList.add('text-blue-500')
+    nooberXLButtonFormat.classList.add('text-blue-500')
+    allRidesButtonFormat.classList.add('bg-blue-500','text-white')
+
+
+    let url = 'https://kiei451.com/api/rides.json'
+    let response = await fetch(url)
+    let json = await response.json()
+    
+    let arrayOfRides = json
+    renderRides(arrayOfRides)
+  })
+
+    
+  let nooberPurpleButton = document.querySelector('#noober-purple-filter')
+  nooberPurpleButton.addEventListener('click', async function(event)
+  {
+    event.preventDefault()
+    let clearDiv = document.querySelector('.rides')
+    clearDiv.innerHTML = ''
+
+    
+    nooberPoolButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    nooberPurpleButtonFormat.classList.remove('text-purple-500')
+    nooberXButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    nooberXLButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    allRidesButtonFormat.classList.remove('bg-blue-500', 'text-white')
+
+    nooberPoolButtonFormat.classList.add('text-blue-500')
+    nooberPurpleButtonFormat.classList.add('bg-purple-500', 'text-white')
+    nooberXButtonFormat.classList.add('text-blue-500')
+    nooberXLButtonFormat.classList.add('text-blue-500')
+    allRidesButtonFormat.classList.add('text-blue-500')
+
+
+    let reportPurpleEvent = 'Noober Purple Was Chosen'
+    console.log(reportPurpleEvent)
+
+    let url = 'https://kiei451.com/api/rides.json'
+    let response = await fetch(url)
+    let json = await response.json()
+
+    let arrayOfRides = json
+    for(let i = 0; i<arrayOfRides.length;i++)
+    {
+      let ride = arrayOfRides[i]
+      let level = levelOfService(ride)
+      let purpleArray = []
+    
+      if(level == 'Noober Purple')
+      {
+        purpleArray.push(ride)
+        renderRides(purpleArray)
+      }
+
+    }
+  })
+
+  let nooberPoolButton = document.querySelector('#noober-pool-filter')
+  nooberPoolButton.addEventListener('click', async function(event)
+  {
+    event.preventDefault()
+    let clearDiv = document.querySelector('.rides')
+    clearDiv.innerHTML = ''
+
+    nooberPoolButtonFormat.classList.remove('text-blue-500')
+    nooberPurpleButtonFormat.classList.remove('bg-purple-500', 'text-white')
+    nooberXButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    nooberXLButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    allRidesButtonFormat.classList.remove('bg-blue-500', 'text-white')
+
+    nooberPoolButtonFormat.classList.add('bg-blue-500', 'text-white')
+    nooberPurpleButtonFormat.classList.add('text-purple-500')
+    nooberXButtonFormat.classList.add('text-blue-500')
+    nooberXLButtonFormat.classList.add('text-blue-500')
+    allRidesButtonFormat.classList.add('text-blue-500')
+    
+
+    let reportPoolEvent = 'Noober Pool Was Chosen'
+    console.log (reportPoolEvent)
+
+    let url = 'https://kiei451.com/api/rides.json'
+    let response = await fetch(url)
+    let json = await response.json()
+
+    let arrayOfRides = json
+    for(let i = 0; i<arrayOfRides.length; i++)
+    {
+      let ride = arrayOfRides[i]
+      let level = levelOfService(ride)
+      let poolArray = []
+
+      if(level == 'Noober Pool')
+      {
+        poolArray.push(ride)
+        renderRides(poolArray)
+      }
+
+    }
+  })
+
+  let nooberXButton = document.querySelector('#noober-x-filter')
+  nooberXButton.addEventListener('click', async function(event)
+  {
+    event.preventDefault()
+    let clearDiv = document.querySelector('.rides')
+    clearDiv.innerHTML = ''
+
+    nooberPoolButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    nooberPurpleButtonFormat.classList.remove('bg-purple-500', 'text-white')
+    nooberXButtonFormat.classList.remove('text-blue-500')
+    nooberXLButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    allRidesButtonFormat.classList.remove('bg-blue-500', 'text-white')
+
+    nooberPoolButtonFormat.classList.add('text-blue-500')
+    nooberPurpleButtonFormat.classList.add('text-purple-500')
+    nooberXButtonFormat.classList.add('bg-blue-500', 'text-white')
+    nooberXLButtonFormat.classList.add('text-blue-500')
+    allRidesButtonFormat.classList.add('text-blue-500')
+
+
+
+    let reportXEvent = 'Noober X Was Chosen'
+    console.log(reportXEvent)
+
+    let url = 'https://kiei451.com/api/rides.json'
+    let response = await fetch(url)
+    let json = await response.json()
+
+    let arrayOfRides = json
+    for(let i = 0; i<arrayOfRides.length;i++)
+    {
+      let ride = arrayOfRides[i]
+      let level = levelOfService(ride)
+      let xArray = []
+
+      if(level == 'Noober X')
+      {
+        xArray.push(ride)
+        renderRides(xArray)
+      }
+    }
+  })
+
+  let nooberXLButton = document.querySelector('#noober-xl-filter')
+  nooberXLButton.addEventListener('click', async function(event)
+  {
+    event.preventDefault()
+    let clearDiv = document.querySelector('.rides')
+    clearDiv.innerHTML = ''
+
+    nooberPoolButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    nooberPurpleButtonFormat.classList.remove('bg-purple-500', 'text-white')
+    nooberXButtonFormat.classList.remove('bg-blue-500', 'text-white')
+    nooberXLButtonFormat.classList.remove('text-blue-500')
+    allRidesButtonFormat.classList.remove('bg-blue-500', 'text-white')
+
+    nooberPoolButtonFormat.classList.add('text-blue-500')
+    nooberPurpleButtonFormat.classList.add('text-purple-500')
+    nooberXButtonFormat.classList.add('text-blue-500')
+    nooberXLButtonFormat.classList.add('bg-blue-500','text-white')
+    allRidesButtonFormat.classList.add('text-blue-500')
+
+    let reportXLEvent = 'Noober XL Was Chosen'
+    console.log(reportXLEvent)
+
+    let url = 'https://kiei451.com/api/rides.json'
+    let response = await fetch(url)
+    let json = await response.json()
+
+    let arrayOfRides = json
+    for(let i = 0; i<arrayOfRides.length; i++)
+    {
+      let ride = arrayOfRides[i]
+      let level = levelOfService(ride)
+      let xLargeArray = []
+
+      if (level == 'Noober XL')
+      {
+        xLargeArray.push(ride)
+        renderRides(xLargeArray)
+      }
+    }
+  })
+
+
 })
 
